@@ -6,7 +6,7 @@ import time
 from database.login import get_user, get_user_by_id
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '7\xae\xfa\x0c\xad\x07~\xfb\x9f=\x19\xec\xc0\x0f;8\xeb\xe1\x12\xc0\xee\x042\x89n\n\xfb\xcd\xf1\x04\xda\x87'
+app.config['SECRET_KEY'] = '\xad\xdb\xe9o\x84\x03S\xa93\xc2X\x0ejlq\xad\xcd1\xb0Ub'
 
 login_manager = LoginManager()
 login_manager.user_loader(get_user_by_id)

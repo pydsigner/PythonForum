@@ -24,6 +24,10 @@ class Avatar(object):
         self.username = username
         self.active = active
         self.email = email
+        self.authd = True
+
+    def is_authenticated(self):
+        return self.authd
 
     def is_active(self):
         return self.active
@@ -35,22 +39,25 @@ class Avatar(object):
     def get_id(self):
         return self.id
 
+
 def get_user_by_id(userid):
     """Return an Avatar for the given userid."""
-    return User.load(user_database, userid)
+    user = User.load(user_database, userid)
+    return Avatar(user.id, user.email, user.username, user.active)
 
 def get_user(data):
     """Return or create a user from data handed to us by BrowserID(Persona)"""
     if data['status'] == "okay":
         # get user or create
         email = data['email']
-        rows = User.by_email(user_database, key=email)
+        result = User.by_email(user_database, key=email)
         try:
-            user = rows[0]
+            current_user = result.rows[0]
         except IndexError:
+            print "user doesn't exist."
             # User doesn't exist. Create user now
-            user = User(email=email, username=email, active=True)
-            user.store(user_database)
-        return Avatar(user.id, user.email, user.username, user.active)
+            current_user = User(email=email, username=email, active=True)
+            current_user.store(user_database)
+        return Avatar(current_user.id, current_user.email, current_user.username, current_user.active)
     else:
         return None # Failed to auth with persona

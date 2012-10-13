@@ -8,9 +8,10 @@
 <body>
 {% if current_user.is_authenticated() %}
 <h3>Logged in as {{ current_user.email }}</h3>
+<!-- TODO: Create a pretty logout button -->
 <button id="browserid-logout">Logout</button>
 {% else %}
-<button id="browserid-login">Login</button>
+<img id="browserid-login" src="{{ url_for('static', filename='login.png') }}">
 {% endif %}
 </body>
 </html>

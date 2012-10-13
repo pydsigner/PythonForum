@@ -20,6 +20,9 @@ browser_id.init_app(app)
 def time_at_server():
     return time.asctime()
 
-@app.route("/")
+@app.route("/persona/test")
 def index():
-    return render_template("index.html")
+    return render_template("loginTest.html")
+
+import views.index
+import views.favicon

@@ -1,3 +1,8 @@
 from couchdb import Server
-server = Server("https://jkbbwr:%s@jkbbwr.cloudant.com" % raw_input("Enter password: "))
 
+try:
+    from dev_config import server
+except ImportError:
+    server = ""
+
+server = Server(server)

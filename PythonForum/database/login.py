@@ -1,26 +1,14 @@
-from couchdb.mapping import *
-import couchdb
-from PythonForum.database import server
-
-try:
-    user_database = server.create("pf-userdb")
-except couchdb.PreconditionFailed:
-    user_database = server["pf-userdb"]
+from PythonForum.database import users_db
+from PythonForum import app
+from mongoengine import *
 
 class User(Document):
-    email = TextField()
-    username = TextField()
+    email = StringField(required=True)
+    username = StringField()
     active = BooleanField()
 
-    by_email = ViewField("searches", """
-    function(doc) {
-        emit(doc.email, doc);
-    }
-    """)
-
 class Avatar(object):
-    def __init__(self, id, email, username, active):
-        self.id = id
+    def __init__(self, email, username, active):
         self.username = username
         self.active = active
         self.email = email
@@ -37,27 +25,24 @@ class Avatar(object):
         return False
 
     def get_id(self):
-        return self.id
-
+        return self.email
 
 def get_user_by_id(userid):
     """Return an Avatar for the given userid."""
-    user = User.load(user_database, userid)
-    return Avatar(user.id, user.email, user.username, user.active)
+    user = User.objects(email=userid).first()
+    return Avatar(user.email, user.username, user.active)
 
 def get_user(data):
     """Return or create a user from data handed to us by BrowserID(Persona)"""
     if data['status'] == "okay":
         # get user or create
         email = data['email']
-        result = User.by_email(user_database, key=email)
-        try:
-            current_user = result.rows[0]
-        except IndexError:
-            print "user doesn't exist."
+        current_user = User.objects(email=email).first()
+        print current_user
+        if current_user is None:
             # User doesn't exist. Create user now
             current_user = User(email=email, username=email, active=True)
-            current_user.store(user_database)
-        return Avatar(current_user.id, current_user.email, current_user.username, current_user.active)
+            current_user.save()
+        return Avatar(current_user.email, current_user.username, current_user.active)
     else:
         return None # Failed to auth with persona

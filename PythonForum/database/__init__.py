@@ -7,7 +7,7 @@ from mongoengine import connect
 try:
     from db_config import db_uri as host
 except ImportError:
-    # On failing to import that connection look for an environ variable to tell us where to connect
+    # On failing to import that information look for an environ variable to tell us where to connect
     # Failing that just try for a local host connection
     host = os.environ.get("PF_MONGO_SERVER", "mongodb://localhost/pf")
 

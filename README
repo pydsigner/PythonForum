@@ -1,1 +1,15 @@
-This file was created by PyCharm 2.6.2 for binding GitHub repository
+Okay so here we go.
+
+This is an attempt at a proper Python based forum framework for
+python-forum.org
+
+The project has the following dependencies;
+    - mongoengine
+    - flask
+    - flask-login
+    - flask-browserid
+
+To contribute, fork the project, create a branch, work on an issue or bug, with that issue number as the branch name
+Then ask for a pull request.
+When I am happy with the work in the pull request, I will merge that into a project branch
+Then when it gets reviewed or finished it will be merged into the main tree.

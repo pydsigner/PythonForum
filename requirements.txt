@@ -1,0 +1,4 @@
+mongoengine>=0.7.5
+Flask>=0.9
+Flask-BrowserID>=0.0.1
+Flask-Login>=0.1.3

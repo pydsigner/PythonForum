@@ -1,0 +1,5 @@
+*.pyc
+*.pyo
+*.pyd
+
+db_config.py

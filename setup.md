@@ -21,7 +21,10 @@ Add PythonForum to PYTHONPATH
 ## Running the Forum
 
 Run `$ mongod --dbpath PythonForum/database/`
+
 Run `$ python -m PythonForum`
+
+Navigate to wherever you named the server, and enjoy.
 
 [MongoDb]: http://www.mongodb.org/display/DOCS/Quickstart
 [mongoengine]: http://mongoengine.org/#getting-started

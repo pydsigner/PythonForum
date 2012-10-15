@@ -12,12 +12,16 @@ Install [flask-login]
 
 Install [flask-browserid]
 
+## Server setup
+
 Add the file `db_config.py` in PythonForum directory with the line
-    db_uri = mongodb://<Server Name>
+`db_uri = 'mongodb://<Server Name>'`
+Add PythonForum to PYTHONPATH
 
-Run `$ mongod --dbpath <path-to-db>`
+## Running the Forum
 
-Add PythonForum to PYTHONPATH and run `python -m PythonForum`
+Run `$ mongod --dbpath PythonForum/database/`
+Run `$ python -m PythonForum`
 
 [MongoDb]: http://www.mongodb.org/display/DOCS/Quickstart
 [mongoengine]: http://mongoengine.org/#getting-started

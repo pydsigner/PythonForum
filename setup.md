@@ -16,6 +16,7 @@ Install [flask-browserid]
 
 Add the file `db_config.py` in PythonForum directory with the line
 `db_uri = 'mongodb://<Server Name>'`
+
 Add PythonForum to PYTHONPATH
 
 ## Running the Forum

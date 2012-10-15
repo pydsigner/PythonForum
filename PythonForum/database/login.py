@@ -1,4 +1,4 @@
-from PythonForum.database import users_db
+from PythonForum.database import forum
 from PythonForum import app
 from mongoengine import *
 

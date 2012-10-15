@@ -11,5 +11,4 @@ except ImportError:
     # Failing that just try for a local host connection
     host = os.environ.get("PF_MONGO_SERVER", "mongodb://localhost/pf")
 
-users_db = connect("users", host=host)
 forum = connect("forum", host=host)

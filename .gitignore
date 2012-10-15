@@ -3,3 +3,5 @@
 *.pyd
 
 db_config.py
+PythonForum/database/journal/
+PythonForum/database/mongod.lock

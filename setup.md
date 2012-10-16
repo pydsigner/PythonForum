@@ -2,6 +2,10 @@
 
 ## Install dependencies
 
+Run `pip install -r requirements.txt`
+
+or install each dependency.
+
 Install [MongoDb]
 
 Install [mongoengine]

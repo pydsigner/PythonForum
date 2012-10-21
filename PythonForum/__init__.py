@@ -34,6 +34,7 @@ def index():
 
 # Import application views here!
 import views.index
+import views.category
 import views.favicon
 import views.personal_api
 import views.public_api

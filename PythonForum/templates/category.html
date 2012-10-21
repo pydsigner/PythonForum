@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+  {% block title %}Python Forum - Random Forum{% endblock %}
+  {% block content %}
+    <div class="well">
+      <ul class="breadcrumb">
+        <li><a href="#">Board Index</a> <span class="divider">></span></li>
+        <li><a href="#">General</a> <span class="divider">></span></li>
+        <li class="active">Python General</li>
+      </ul>
+      <h2>Python General</h2>
+      <!-- Announcements -->
+      <ul class="_forum">
+        <li class="row">
+          <p class="span7">Announcements</p>
+          <p class="span2">Author</p>
+          <p class="span3">Last Post</p>
+        </li>
+        <!-- TODO: This needs to be replaced with a loop -->
+        <li class="row">
+          <p class="span7">
+            <a href="#">Donate to save PythonForum</a>
+          </p>
+          <p class="span2">Taos</p>
+          <p class="span3">Sun Oct 14, 2012 8:20 am</p>
+        </li>
+        <li class="row">
+          <p class="span7">
+            <a href="#">python-forum.org end of life 20 Oct</a>
+          </p>
+          <p class="span2">python</p>
+          <p class="span3">Wed Oct 10, 2012 6:40 am</p>
+        </li>
+        <li class="row">
+          <p class="span7">
+            <a href="#">New Members PLEASE read this 1st BEFORE you post</a>
+          </p>
+          <p class="span2">redmarvel</p>
+          <p class="span3">Mon Jan 26, 2009 9:07 am</p>
+        </li>
+      </ul>
+      <!-- Topics -->
+      <ul class="_forum">
+        <li class="row">
+          <p class="span7">Topics</p>
+          <p class="span2">Author</p>
+          <p class="span3">Last Post</p>
+        </li>
+        <!-- TODO: This needs to be replaced with a loop -->
+        <li class="row">
+          <p class="span7">
+            <a href="#">When to move to 3.x?</a>
+          </p>
+          <p class="span2">supertom44</p>
+          <p class="span3">Sat Jun 16, 2012 2:34 am</p>
+        </li>
+        <li class="row">
+          <p class="span7">
+            <a href="#">Clear python shell command?</a>
+          </p>
+          <p class="span2">hockeyboi917</p>
+          <p class="span3">Mon Oct 15, 2012 10:10 am</p>
+        </li>
+        <li class="row">
+          <p class="span7">
+            <a href="#">What is pure and modifier function?</a>
+          </p>
+          <p class="span2">envuz</p>
+          <p class="span3">Mon Oct 15, 2012 10:02 am</p>
+        </li>
+      </ul>
+    </div>
+  {% endblock %}

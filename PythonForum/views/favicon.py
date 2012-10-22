@@ -3,7 +3,6 @@ import os
 from flask import send_from_directory
 from PythonForum import app
 
-
 @app.route('/favicon.ico')
 def favicon():
     """Return the favicon.ico for the forum. I didn't write this."""

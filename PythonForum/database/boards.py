@@ -1,10 +1,10 @@
 from mongoengine import *
-
-from categories import Category
+from threads import Thread
 
 class Board(Document):
     """
-    This represents the entire forum.
-    This class keeps a reference of all the categories.
+    A Board object represents a list of topics.
     """
-    categories = ListField(ReferenceField(Category, dbref=False))
+    name = StringField()
+    description = StringField()
+    topics = ListField(ReferenceField(Thread, dbref=False))

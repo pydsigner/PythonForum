@@ -1,11 +1,10 @@
 from mongoengine import *
-
-from threads import Thread
+from boards import Board
 
 class Category(Document):
     """
-    A category object represents a list of topics.
+    A category object represents a list of boards.
     """
-    topics = ListField(ReferenceField(Thread, dbref=False))
     name = StringField()
     description = StringField()
+    boards = ListField(ReferenceField(Board, dbref=False))

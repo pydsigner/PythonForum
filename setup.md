@@ -23,7 +23,15 @@ Add the file `db_config.py` in PythonForum directory with the line
 
 Add PythonForum to PYTHONPATH
 
+Run `$ mongod --dbpath PythonForum/database/`
+
+Run `$ python PythonForum/util/populate_mongo.py`
+
 ## Running the Forum
+
+Run `$ ./start.sh
+
+or
 
 Run `$ mongod --dbpath PythonForum/database/`
 

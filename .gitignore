@@ -5,3 +5,6 @@
 db_config.py
 PythonForum/database/journal/
 PythonForum/database/mongod.lock
+PythonForum/database/*.0
+PythonForum/database/*.1
+PythonForum/database/*.ns

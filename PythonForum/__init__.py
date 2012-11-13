@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from flask.ext.login import LoginManager
 from flask.ext.browserid import BrowserID
 import time
@@ -33,9 +33,12 @@ def index():
     return render_template("loginTest.html")
 
 # Import application views here!
+import views.board
 import views.index
-import views.category
 import views.favicon
+import views.topic
+
+# API views.
 import views.personal_api
 import views.public_api
 import views.private_api

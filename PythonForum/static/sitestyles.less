@@ -3,13 +3,18 @@
 @lightGrey: #cecece;
 
 ._siteTitle {
-	padding: 50px;
+	padding: 50px 0;
 	text-align: center;
 	
 	p {
 		color: @lightGrey;
 	}
 	
+}
+ul._posts {
+	list-style: none;
+	padding: 0;
+	margin: 0;	
 }
 ._nav .navbar-inner ul.nav li.image a {
 	height: 20px;
@@ -41,7 +46,6 @@
 		border-right: @lightGrey solid 1px;
 		padding: 10px;
 		background: @lightGrey * 1.05;
-        margin: 0;
 	}
 	
 	li:first-child {
@@ -74,6 +78,9 @@
 /*UTILS*/
 /*UTILS*/
 /*UTILS*/
+._justify {
+	text-align: justify;
+}
 .gradGrey {
 background: rgb(96,108,136)!important; /* Old browsers */
 background: -moz-linear-gradient(top, rgba(96,108,136,1) 0%, rgba(63,76,107,1) 100%)!important; /* FF3.6+ */

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Python Forum - Random Forum - You broke it you fool.{% endblock %}
+{% block content %}
+<div class="well">
+    <ul class="breadcrumb">
+        <li><a href="#">Board Index</a> <span class="divider">></span></li>
+        <li><a href="#">General</a> <span class="divider">></span></li>
+        <li class="active">Python General</li>
+    </ul>
+    <h2>Python General</h2>
+
+    <!-- TODO: Optimse away the TWO for loops. -->
+
+    <!-- Announcements -->
+    <ul class="_forum">
+        <li class="row">
+            <p class="span7">Announcements</p>
+
+            <p class="span2">Author</p>
+
+            <p class="span3">Last Post</p>
+        </li>
+        {% for topic in topics %}
+        {% if topic.is_announcement %}
+        <li class="row">
+            <p class="span7">
+                <a href="#">{{ topic.title }}</a>
+            </p>
+
+            <p class="span2">{{ topic.author.username }}</p>
+
+            <p class="span3">{{ topic.date }}/p>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+
+    <!-- Topics -->
+    <ul class="_forum">
+        <li class="row">
+            <p class="span7">Topics</p>
+
+            <p class="span2">Author</p>
+
+            <p class="span3">Last Post</p>
+        </li>
+        <!-- TODO: This needs to be replaced with a loop -->
+        {% for topic in topics %}
+        {% if not topic.is_announcement %}
+        <li class="row">
+            <p class="span7">
+                <a href="{{ url_for('topic', topic_uuid=topic.topic_uuid) }}">{{ topic.title }}</a>
+            </p>
+
+            <p class="span2">{{ topic.author.username }}</p>
+
+            <p class="span3">{{ topic.date }}/p>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        <!-- DEMO -->
+        <li class="row">
+            <p class="span7">
+                <a href="#">Demo title</a>
+            </p>
+            <p class="span2">Demo author</p>
+            <p class="span3">Demo date</p>
+        </li>
+
+    </ul>
+</div>
+{% endblock %}

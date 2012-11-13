@@ -1,5 +1,7 @@
+import datetime
 from mongoengine import *
 import sys
+import shortuuid
 
 try:
     host = sys.argv[1]
@@ -14,7 +16,7 @@ if not cont:
 db = connect("forum", host=host)
 
 
-from PythonForum.database import forum, categories, boards, threads, posts
+from PythonForum.database import forum, categories, boards, threads, posts, login
 
 # drop all the documents!
 for document in [forum.Forum, categories.Category, boards.Board, threads.Thread, posts.Post]:
@@ -35,24 +37,42 @@ misc.save()
 python_forum.categories.extend([general, activities, python_coding, misc])
 python_forum.save()
 # create some boards
-python_general = boards.Board(name="Python General", description="General coding questions")
+python_general = boards.Board(name="Python General", description="General coding questions", board_id=1)
 general.boards.append(python_general)
 python_general.save()
 general.save()
 
-beginners = boards.Board(name="Beginners..", description="The board for beginners to post in!")
+beginners = boards.Board(name="Beginners..", description="The board for beginners to post in!", board_id=2)
 python_coding.boards.append(beginners)
 beginners.save()
 python_coding.save()
 
-contests = boards.Board(name="Contests", description="Compete for non existant prizes!")
+contests = boards.Board(name="Contests", description="Compete for non existant prizes!", board_id=3)
 activities.boards.append(contests)
 contests.save()
 activities.save()
 
-bar = boards.Board(name="Bar", description="Talk about everything not only python.")
+bar = boards.Board(name="Bar", description="Talk about everything not only python.", board_id=4)
 misc.boards.append(bar)
 bar.save()
 misc.save()
 
+demo_user_1 = login.User(email="test@test1.com", username="bobcat", active=True)
+demo_user_1.save()
+demo_user_2 = login.User(email="test@test2.com", username="davebob", active=True)
+demo_user_2.save()
+
+posts = [posts.Post(author=demo_user_1, tile="Reply number 1", content="Fuck your couch"),
+         posts.Post(author=demo_user_2, tile="Reply number 2", content="Fuck your couch"),
+         posts.Post(author=demo_user_1, tile="Reply number 3", content="Fuck your couch"),]
+for post in posts:
+    post.save()
+
+test_topic = threads.Thread(posts=posts, author=demo_user_2, title="Test thread", is_announcement=False, topic_uuid=shortuuid.uuid(),
+                            date=datetime.date.today())
+
+test_topic.save()
+
+python_general.topics.append(test_topic)
+python_general.save()
 print "Done."

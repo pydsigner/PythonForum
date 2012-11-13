@@ -10,3 +10,6 @@ class Thread(Document):
     posts = ListField(ReferenceField(Post, dbref=False))
     author = ReferenceField(User, dbref=False)
     title = StringField()
+    is_announcement = False
+    topic_uuid = StringField()
+    date = DateTimeField()
